@@ -49,6 +49,7 @@
         this.page.set('onError', function (msg, trace) {
           console.log("ERROR: ", msg);
           console.log("ERROR TRACE: ", trace);
+		  process.exit(1);
         });
         this.page.evaluate(function(obj) {
           var args = '';
@@ -204,6 +205,7 @@
                   } else if(tries > 15) {
                     clearInterval(loadInterval);
                     console.log("Sorry, I couldn't seem to connect.");
+					process.exit(1);
                   }
                 });
               }, 2000);
@@ -287,6 +289,7 @@
                 }, creds);
               } else {
                 console.log("Couldn't find login button.");
+				process.exit(1);
               }
             });
           }, 4000);
