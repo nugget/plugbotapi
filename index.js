@@ -205,7 +205,7 @@
                   } else if(tries > 15) {
                     clearInterval(loadInterval);
                     console.log("Sorry, I couldn't seem to connect.");
-					process.exit(1);
+                    _this.emit('unableToConnect');
                   }
                 });
               }, 2000);
@@ -392,7 +392,6 @@
       this.apiCall('getHistory', null, callback);
     };
     
-    // TODO:make sure this works
     PlugBotAPI.prototype.hasPermission = function(userid, role, callback) {
       this.apiCall('hasPermission', [userid, role], callback);
     };
@@ -441,16 +440,17 @@
       var userid = arguments[0];
       var duration = this.API.BAN.PERMA;
       var callback;
+      var reason = 4;
 
       for(var i=1;i<arguments.length;i++) {
         if(typeof arguments[i] == 'function')
           callback = arguments[i];
         else if(typeof arguments[i] == 'number')
-          duration = arguments[i];
-        else if(typeof arguments[i] == 'string')
           reason = arguments[i];
+        else if(typeof arguments[i] == 'string')
+          duration = arguments[i];
       }
-      this.apiCall('moderateBanUser', [userid, 'a', duration], callback);
+      this.apiCall('moderateBanUser', [userid, reason, duration], callback);
     };
     
     PlugBotAPI.prototype.moderateUnbanUser = function(userid, callback) {
