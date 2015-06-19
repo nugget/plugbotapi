@@ -264,7 +264,7 @@
                 page.evaluate(function(creds) {
                   $('#email').val(creds.email);
                   $('#password').val(creds.password);
-                  $('#submit').click();
+                  $('.email-login button').click();
                   return true;
                 }, function(result) {
                   _this.loggedin = true;
