@@ -1,6 +1,6 @@
 # This project is dead and deprecated #
 
-Please see git@github.com:nugget/plugbotapi.git for a currently working Plug.dj
+Please see https://github.com/plugCubed/plugAPI for a currently working Plug.dj
 API (well, working at the time of this writing).
 
 plugbotapi
